@@ -1,7 +1,7 @@
 import { initMongoose } from "../../lib/mongoose";
 import { authOptions } from "./auth/[...nextauth]";
 import { getServerSession } from "next-auth";
-import User from "../../models/User";
+import User from "../../Models/User";
 
 export default async function handler(req, res) {
   await initMongoose();

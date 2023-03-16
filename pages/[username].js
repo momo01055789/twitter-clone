@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Avatar from "../components/Avatar";
 import Cover from "../components/Cover";
 import Layout from "../components/Layout";
-import TopNavLink from "../components/topNavLink";
+import TopNavLink from "../components/TopNavLink";
 import Tweet from "../components/Tweet";
 import useUserInfo from "../hooks/useUserInfo";
 

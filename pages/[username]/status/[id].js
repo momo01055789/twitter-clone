@@ -5,7 +5,7 @@ import useUserInfo from "../../../hooks/useUserInfo";
 import PostForm from "../../../components/PostForm";
 import Layout from "../../../components/Layout";
 import Tweet from "../../../components/Tweet";
-import TopNavLink from "../../../components/topNavLink";
+import TopNavLink from "../../../components/TopNavLink";
 
 export default function PostPage() {
   const router = useRouter();
