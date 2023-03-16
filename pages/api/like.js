@@ -1,0 +1,31 @@
+import { initMongoose } from "../../lib/mongoose";
+import { authOptions } from "./auth/[...nextauth]";
+import { getServerSession } from "next-auth";
+import Like from "../../Models/Like";
+import Post from "../../Models/Post";
+
+async function updateLikesCount(postId) {
+  const post = await Post.findById(postId);
+  post.likesCount = await Like.countDocuments({ post: postId });
+  await post.save();
+}
+
+export default async function handle(req, res) {
+  await initMongoose();
+  const session = await getServerSession(req, res, authOptions);
+
+  const postId = req.body.id;
+  const userId = session.user.id;
+
+  const existingLike = await Like.findOne({ author: userId, post: postId });
+
+  if (existingLike) {
+    await Like.deleteOne(existingLike);
+    await updateLikesCount(postId);
+    res.json(null);
+  } else {
+    const like = await Like.create({ author: userId, post: postId });
+    await updateLikesCount(postId);
+    res.json({ like });
+  }
+}
