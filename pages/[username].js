@@ -8,7 +8,7 @@ import TopNavLink from "../components/topNavLink";
 import Tweet from "../components/Tweet";
 import useUserInfo from "../hooks/useUserInfo";
 
-export default function userPage() {
+export default function UserPage() {
   const router = useRouter();
   const { username } = router.query;
   const { userInfo } = useUserInfo();
